@@ -3,27 +3,21 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   SearchOutlined,
-  SmileOutlined,
-  UploadOutlined,
   UpOutlined,
   UserOutlined,
-  VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Icon } from "@iconify/react";
-import { Dropdown, Layout, Menu, Space, theme } from "antd";
+import { Dropdown, Layout, Space, Menu } from "antd";
 import React, { useState } from "react";
-import "../components/Sidebar.css";
-
+import "./Sidebar.css";
 import UserIcon from "../assests/images/profile-pic-01.jpg";
 import ourUser_2 from "../assests/images/profile-pic-02.jpg";
 import ourUser_3 from "../assests/images/profile-pic-03.jpg";
 import ourUser_4 from "../assests/images/profile-pic-04.jpg";
-import ourUser_5 from "../assests/images/profile-pic-05.jpg";
-import ourUser_6 from "../assests/images/profile-pic-06.jpg";
 import videoThumbnail from "../assests/images/video thumbnail.png";
 import Linechart from "./Linechart";
-import PieChart from "../components/Piechart";
-import Link from "antd/es/typography/Link";
+import PieChart from "./Piechart";
+import Menuitem from "./NotificationMenu";
 
 const { Header, Sider, Content } = Layout;
 
@@ -33,58 +27,8 @@ const headerStyle = {
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [open, setopen] = useState(false);
-  const [dotopen, setdot] = useState(true);
+
   const [arrowDir, setarrowDir] = useState(false);
-
-  const menuList = [
-    <div className="row text-center">
-      <div className="col-2 gx-0">
-        <img
-          src={ourUser_2}
-          className="rounded-circle"
-          alt=""
-          width={40}
-          height={40}
-        />
-      </div>
-      <div className="col-7  gx-0">Drew James Uinted States</div>
-      <div className="col-3 gx-0">2 min ago</div>
-      <div className="col-2 gx-0">
-        <img
-          src={ourUser_2}
-          className="rounded-circle"
-          alt=""
-          width={40}
-          height={40}
-        />
-      </div>
-      <div className="col-7 gx-0">Drew James Uinted States</div>
-      <div className="col-3 gx-0">5 min ago</div>
-      <div className="col-2 gx-0">
-        <img
-          src={ourUser_2}
-          className="rounded-circle"
-          alt=""
-          width={40}
-          height={40}
-        />
-      </div>
-      <div className="col-7 gx-0">Drew James Uinted States</div>
-      <div className="col-3 gx-0">10 min ago</div>
-      <hr />
-      <Link className="notificationShowMore">Show More</Link>
-    </div>,
-  ];
-
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-
-  const iconIndication = () => {
-    setopen(!open);
-    setdot(!dotopen);
-  };
 
   const dropdownmenu = (e) => {
     e.preventDefault();
@@ -120,14 +64,7 @@ const Sidebar = () => {
       >
         <div className="logo" />
         <div className="p-3">
-          <h5
-            style={{
-              color: "white",
-              marginRight: "10px",
-            }}
-          >
-            ACME
-          </h5>
+          <h5 className="logo-font">ACME</h5>
         </div>
         <Menu
           theme="#3C3B54"
@@ -163,7 +100,7 @@ const Sidebar = () => {
         />
       </Sider>
 
-      <Layout className="w-100">
+      <Layout className="w-100 ">
         <Header
           style={headerStyle}
           className="position-relative inverted-border-radius"
@@ -184,28 +121,11 @@ const Sidebar = () => {
                 Search transactions,invoices or help
               </div>
             </div>
-            <div className="col-4 text-end mt-1 gx-4 notifyIconSapce">
-              <Icon
-                icon="clarity:notification-line"
-                className="fs-6 "
-                onClick={iconIndication}
-              />
-              {dotopen && (
-                <span className="dot position-absolute mt-4 me-5 "></span>
-              )}
-
-              {open && (
-                <div className="card  notifyCard">
-                  <div className="card-body">
-                    {menuList.map((menu) => (
-                      <div>{menu}</div>
-                    ))}
-                  </div>
-                </div>
-              )}
+            <div className="col-4 text-end mt-1 gx-1 notifyIconSapce">
+              <Menuitem />
             </div>
 
-            <div className="col-2 mt-1 text-end gx-5 userNameFix">
+            <div className="col-2 mt-1 text-end gx-1 userNameFix">
               <span>
                 <Dropdown
                   menu={{
@@ -214,7 +134,7 @@ const Sidebar = () => {
                   trigger={["click"]}
                 >
                   <a className="dropDownMenu" onClick={dropdownmenu}>
-                    <Space className="me-2 ">
+                    <Space className="me-3 ">
                       Jhon Doe
                       {arrowDir === true ? (
                         <>
@@ -238,7 +158,7 @@ const Sidebar = () => {
             {/* headingPortion */}
             <div className="row mt-3 ">
               <div className="col-6">
-                <h4>OverView</h4>
+                <p className="heading">OverView</p>
               </div>
               <div className="col-6 text-end">
                 <button className="btn addFundBtn ">
@@ -257,17 +177,20 @@ const Sidebar = () => {
               {/* main col-8 */}
               <div className="col-12 col-md-8 ">
                 {/* chart card Starts */}
-                <div className="row ">
+                <div className="row">
                   {/* statistics card */}
                   <div className="col-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
                     <div className="card">
                       <div className="card-body">
                         <div className="row">
                           <div className="col-6">
-                            <p>Statistics</p>
+                            <p className="statistic-font">Statistics</p>
                           </div>
                           <div className="col-6 text-end">
-                            <p>Last 6 months</p>
+                            <p className="statistic-font">
+                              Last 6 months
+                              <DownOutlined className="cursor-pointer mx-1" />
+                            </p>
                           </div>
                           <div className="col-12">
                             <Linechart />
@@ -283,7 +206,7 @@ const Sidebar = () => {
                       <div className="card-body">
                         <div className="row">
                           <div className="col-12">
-                            <p>Sales Distribution</p>
+                            <p className="statistic-font">Sales Distribution</p>
                           </div>
                           <div className="col-12">
                             <PieChart />
@@ -300,7 +223,7 @@ const Sidebar = () => {
                   <div className="card">
                     <div className="card-body">
                       <div className="table-responsive">
-                        <h6>Referrer</h6>
+                        <p className="referrerFont">Referrer</p>
                         <table class="table">
                           <thead className="border-0">
                             <tr className="tableHead">
@@ -430,11 +353,11 @@ const Sidebar = () => {
                             />
                           </div>
                           <div className="col-4 col-sm-4 col-md-12 col-xl-4 col-xxl-4">
-                            <p className="m-0">Drew James</p>
-                            <p className="m-0">Uinted States</p>
+                            <p className="m-0 userName">Drew James</p>
+                            <p className="m-0 userState">Uinted States</p>
                           </div>
                           <div className="col-6 col-sm-6 col-md-12 col-xl-6 col-xxl-6 text-md-start text-xl-end mt-3 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-3   ">
-                            <p>Mobile:8715674877</p>
+                            <p className="userState">Mobile:8715674877</p>
                           </div>
                         </div>
                         {/* ourUser 2 */}
@@ -447,11 +370,11 @@ const Sidebar = () => {
                             />
                           </div>
                           <div className="col-4 col-sm-4 col-md-12 col-xl-4 col-xxl-4">
-                            <p className="m-0">Bavid James</p>
-                            <p className="m-0">Uinted States</p>
+                            <p className="m-0 userName">Bavid James</p>
+                            <p className="m-0 userState">Uinted States</p>
                           </div>
                           <div className="text-md-start text-xl-end mt-3 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-3   col-6 col-sm-6 col-md-12 col-xl-6 col-xxl-6">
-                            <p>Mobile:8715674877</p>
+                            <p className="userState">Mobile:8715674877</p>
                           </div>
                         </div>
 
@@ -465,11 +388,11 @@ const Sidebar = () => {
                             />
                           </div>
                           <div className="col-4 col-sm-4 col-md-12 col-xl-4 col-xxl-4">
-                            <p className="m-0">Lavid kames</p>
-                            <p className="m-0">Uinted States</p>
+                            <p className="m-0 userName">Lavid kames</p>
+                            <p className="m-0 userState">Uinted States</p>
                           </div>
                           <div className="text-md-start text-xl-end  mt-3 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-3   col-6 col-sm-6 col-md-12 col-xl-6 col-xxl-6">
-                            <p>Mobile:8715674877</p>
+                            <p className="userState">Mobile:8715674877</p>
                           </div>
                         </div>
                       </div>
@@ -481,7 +404,7 @@ const Sidebar = () => {
                     <div className="card">
                       <div className="card-body">
                         <div className="row">
-                          <div className="col-6">Product Video</div>
+                          <div className="col-6 products">Product Video</div>
                           <div className="col-6 text-end">
                             <Icon
                               icon="ph:dots-three-outline-vertical-fill"

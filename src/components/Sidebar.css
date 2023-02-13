@@ -45,7 +45,7 @@
   color: #ffffff;
 }
 .addFundBtn:hover {
-  color: #ffffff;
+  color: #d81818;
 }
 
 .addFundIcon {
@@ -67,6 +67,7 @@
 .userNameText {
   color: #4d4f5c;
   font-size: 18px;
+  font-family: sans-serif;
 }
 
 .userStateText {
@@ -111,8 +112,12 @@
 tbody > tr > td {
   font: normal normal normal 14px/20px Source Sans Pro;
   letter-spacing: 0px;
-  color: #4d4f5c;
+
   opacity: 1;
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #6e6f7a;
 }
 
 .playBtn {
@@ -184,6 +189,9 @@ tbody > tr > td {
   z-index: 1;
 }
 
+.notificationShowMore {
+  text-decoration: none !important;
+}
 .notificationShowMore:hover {
   text-decoration: underline !important;
   text-decoration-color: #3b86ff !important;
@@ -213,16 +221,71 @@ tbody > tr > td {
     left: 63%;
     bottom: 0px;
   }
-  .navUserLogo{
+  .navUserLogo {
     position: absolute;
     top: 33%;
     left: 140%;
   }
 }
 
-
-.ant-menu .ant-menu-root .ant-menu-inline .ant-menu{
+.ant-menu .ant-menu-root .ant-menu-inline .ant-menu {
   position: absolute !important;
   margin-left: 0 !important;
 }
 
+.logo-font {
+  font-family: sans-serif;
+  font-weight: 600;
+
+  size: 16px;
+  color: #ffffff;
+  margin-top: 8px;
+}
+.searchBar {
+  font-family: sans-serif;
+  font-weight: 400;
+  size: 16px;
+  color: #7d7f88;
+}
+.heading {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #43425d;
+}
+.statistic-font {
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #7d7f88;
+}
+.referrerFont {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #7d7f88;
+}
+.userName {
+  font-family: sans-serif;
+  font-weight: 600;
+
+  color: #4d4f5c;
+}
+.userState {
+  font-family: sans-serif;
+
+  color: #a1a0ae;
+}
+.products {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #7d7f88;
+}
+
+.useractivity {
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #4d4f5c;
+}
